@@ -40,7 +40,7 @@ public class FirstController {
                                  @RequestParam(value = "b", required = false) int b,
                                  @RequestParam(value = "operation", required = false) String operation,
                                  Model model) {
-        int result = -1;
+        double result;
         switch (operation) {
             case "plus":
                 result = a + b;
@@ -52,8 +52,10 @@ public class FirstController {
                 result = a * b;
                 break;
             case "divide":
-                result = a / b;
+                result = a / (double) b;
                 break;
+            default:
+                result = -1;
         }
 
         model.addAttribute("countResult", "a " + operation + " b equal to " + result);
